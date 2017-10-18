@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
+  navigation = [
+    { link: 'home', label: 'Home' },
+    { link: 'contacts', label: 'Contacts' },
+    { link: 'settings', label: 'Settings' }
+  ];
 }

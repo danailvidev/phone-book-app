@@ -1,2 +1,32 @@
-<h1>App Component</h1>
-<router-outlet></router-outlet>
+<header>
+  <div id="mobile">
+    <span id="screen">
+      <mat-sidenav-container class="app-root" fullscreen>
+
+        <mat-sidenav #sidenav mode="push">
+          <mat-nav-list>
+            <h3>Menu</h3>
+            <a mat-list-item *ngFor="let item of navigation" (click)="sidenav.close()" [routerLink]="[item.link]" routerLinkActive="active">
+              {{item.label}}
+            </a>
+          </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-toolbar color="primary">
+          <button mat-icon-button (click)="sidenav.open()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <div class="app-toolbar">
+            <h1>Contacts</h1>
+          </div>
+        </mat-toolbar>
+
+        <div class="app-content">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-sidenav-container>
+    </span>
+    <span id="shadow"></span>
+  </div>
+</header>
+<footer>© 2017 Danail Videv</footer>

@@ -5,6 +5,7 @@ import { HomeComponent, ContactsComponent, ContactsGridComponent, ContactsEditCo
 
 const routes: Routes = [
     { path: 'home', component: HomeComponent },
+    { path: 'contacts', component: ContactsComponent },
     { path: '**', pathMatch: 'full', redirectTo: '/home' }
 ];
 
