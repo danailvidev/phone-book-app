@@ -1,3 +1,19 @@
-<p>
-  contacts-edit works!
-</p>
+<mat-card>
+
+  <div>
+    <img *ngIf="contact.imageUrl" [src]="contact.imageUrl" alt="contact image url">
+    <input type="file" (change)="uploadFile($event)">
+  </div>
+
+  <mat-input-container>
+    <input type="text" matInput [(ngModel)]="contact.name">
+  </mat-input-container>
+
+
+
+  <mat-card-actions align="right">
+    <button mat-raised-button color="primary" (click)="saveContact(contact)">Save</button>
+    <button [disabled]="isNewContact" mat-raised-button color="warn" (click)="deleteContact(contact)">Delete</button>
+  </mat-card-actions>
+
+</mat-card>

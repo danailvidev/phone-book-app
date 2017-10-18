@@ -1,3 +1,9 @@
 <p>
   contacts works!
 </p>
+
+<app-contacts-grid [contacts]="contacts$"></app-contacts-grid>
+
+<button mat-fab [routerLink]="['/contact-edit/new']">
+  <mat-icon>add</mat-icon>
+</button>

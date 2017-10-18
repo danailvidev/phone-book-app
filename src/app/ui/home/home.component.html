@@ -1,26 +1,19 @@
-<p>
-  You have 1 week to educate yourself about the required frameworks/libraries and two weeks to write down the code. You are
-  free to contact us for any clarifications (and possibly help with setting up the environment). To implement the tasks,
-  use Java/JavaScript/Angular For User interface language: choose English or Bulgarian
-</p>
-<p>
-  Task: === Task requirements: Version control/tracking: Git. - The initial commit should be as early as possible in the development,
-  so that we can assess the workflow. Build system: Gradle. Database: PostgreSQL. Please include all necessary sql scripts
-  in one file so that we can pass it to the postgresql, create the database structure and test locally. The database name
-  is your_first_name_task, e.g. 'plamen_task'. DB ORM: To persist data in the postgre server use Ebean framework. Database
-  credentials must not be hard coded in the source code. Use external config file or env variables or any other appropriate
-  method. GUI: WEB based GUI using JavaScript/Angular
-</p>
+<section>
 
-<p>
-  Description: Write a phone book application that stores its information in PostgreSQL database. The application must allow
-  the user to: - browse phone book contacts (show a table with all entries with possibility for filtering/searching) - search
-  contacts - manage phone book contacts. This includes: * create a new contact * edit an existing contact * delete an existing
-  contact GUI structure is entirely your choice. Advantage: Write appropriate unit tests.
-</p>
+  <div *ngIf="!(authService.user$ | async)?.uid; else alreadyLoggedIn">
+    <h3>Login</h3>
+    <br>
+    <button mat-raised-button (click)="signInWithGoogle()" class="btn-google">
+      Google Login
+    </button>
+    <br><br>
+    <button mat-raised-button (click)="anonymousLogin()">
+      Аnonymous Login
+    </button>
+  </div>
 
-<p>
-  === Every completed task must contain README file in the repository providing information how the app must be build and run
-  along with all its requirements (e.g. application server) When you are ready please archive the whole git repository (including
-  .git folder) and send it to us. You can use (tar.gz, tar.bz2, ZIP) Please do not use RAR
-</p>
+  <ng-template #alreadyLoggedIn>
+    <h2>Already logged in!</h2>
+  </ng-template>
+
+</section>

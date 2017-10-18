@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   navigation = [
-    { link: 'home', label: 'Home' },
     { link: 'contacts', label: 'Contacts' },
     { link: 'settings', label: 'Settings' }
   ];
+
+  constructor(public authService: AuthService) {
+
+  }
 }

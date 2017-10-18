@@ -1,8 +1,9 @@
 
 export interface IContact {
-    id?: Number;
+    $key: string;
     name: string;
     address?: string;
+    imageUrl?: string;
     email?: string;
     homeNumber?: Number;
     mobileNumber2?: Number;
