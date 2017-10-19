@@ -25,6 +25,8 @@ export class ContactsComponent implements OnInit {
   }
 
   getContactsStartWithChar(letters) {
+    // this.contactService.subject$.next(undefined);
+
     if (letters.toUpperCase() === 'ALL') {
       return this.getContacts();
     }

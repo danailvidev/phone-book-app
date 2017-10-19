@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth/auth.service';
+import { ContactService} from './core/index';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,12 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent {
   navigation = [
-    { link: 'contacts', label: 'Contacts' },
-    { link: 'settings', label: 'Settings' }
+    { link: 'contacts', label: 'Contacts' }
   ];
+  searchBtn = '';
 
-  constructor(public authService: AuthService) {
-
+  constructor(
+    public authService: AuthService,
+    public contactService: ContactService) {
   }
 }

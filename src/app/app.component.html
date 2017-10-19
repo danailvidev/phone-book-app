@@ -3,7 +3,7 @@
     <span id="screen">
       <mat-sidenav-container class="app-root" fullscreen>
 
-        <mat-sidenav #sidenav mode="push">
+        <mat-sidenav #sidenav mode="over">
           <mat-nav-list>
             <h3>Menu</h3>
             <a mat-list-item *ngIf="!(authService.user$ | async)?.uid" (click)="authService.anonymousLogin();sidenav.close()">
@@ -26,7 +26,7 @@
           <div class="app-toolbar">
             <span>Contacts</span>
             <mat-input-container>
-                <input matInput >
+                <input matInput (keyup)="contactService.subject$.next($event.target.value)">
                 <mat-icon mat-suffix>search</mat-icon>
             </mat-input-container>
           </div>

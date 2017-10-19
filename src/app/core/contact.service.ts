@@ -27,6 +27,16 @@ export class ContactService {
         return this.db.object(`/contacts/${contactKey}`);
     }
 
+    getContactByName(name: string) {
+        name = this.capitalizeFirstLetter(name);
+        return this.db.list(`contacts`, {
+            query: {
+                orderByChild: 'name',
+                equalTo: name
+            }
+        });
+    }
+
     // [Obsolete("use this method to get filtered contacts from db")]
     getContactsStartWithChar(letters: string) {
         if (letters.toUpperCase() === 'ALL') {
@@ -111,9 +121,13 @@ export class ContactService {
     // TODO: refactor
     getContacts() {
         return this.subject$
-            .switchMap(companyKey => companyKey === undefined
+            .switchMap(userName =>
+                userName === undefined
+                || userName === ''
+                || userName == null
+                || userName == ' '
                 ? this.contacts$
-                : this.db.list(`companyContacts/${companyKey}`))
+                : this.getContactByName(userName))
             .catch(this.handleError);
     }
 
