@@ -1,17 +1,36 @@
 <mat-card>
 
   <div>
+    <span>Upload Avatar: </span>
     <img *ngIf="contact.imageUrl" [src]="contact.imageUrl" alt="contact image url">
     <input type="file" (change)="uploadFile($event)">
   </div>
-
+  <br>
   <mat-input-container>
-    <input type="text" matInput [(ngModel)]="contact.name">
+    <input matInput placeholder="Name" [(ngModel)]="contact.name">
+  </mat-input-container>
+  <br>
+  <mat-input-container>
+    <input matInput #address placeholder="Address" maxlength="30" [(ngModel)]="contact.address">
+    <mat-hint align="end">{{address.value.length}} / 30</mat-hint>
+  </mat-input-container>
+  <br>
+  <mat-input-container>
+    <input matInput placeholder="Email" type="email" [(ngModel)]="contact.email" [formControl]="emailFormControl">
+    <mat-error *ngIf="emailFormControl.hasError('pattern')">
+      Enter a Valid email!
+    </mat-error>
+  </mat-input-container>
+  <br>
+  <mat-input-container>
+    <input matInput placeholder="Home Number" type="number" [(ngModel)]="contact.homeNumber">
   </mat-input-container>
 
   <mat-card-actions align="right">
-    <button mat-raised-button color="primary" (click)="saveContact(contact)">Save</button>
+    <button mat-raised-button (click)="saveContact(contact)">Save</button>
     <button [disabled]="isNewContact" mat-raised-button color="warn" (click)="deleteContact(contact)">Delete</button>
+    <button style="float:left;" mat-raised-button (click)="back()">Cancel</button>
   </mat-card-actions>
+ 
 
 </mat-card>

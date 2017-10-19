@@ -3,6 +3,7 @@
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 @import url(https://fonts.googleapis.com/css?family=Nunito:400);
 
+// custom font
 body {
     margin: 0;
     font-family: 'Nunito', sans-serif;
@@ -10,3 +11,21 @@ body {
   .mat-button, .mat-raised-button, .mat-icon-button, .mat-fab, .mat-mini-fab, .mat-list-item-content {
     font-family: 'Nunito', sans-serif;
   }
+
+// scrollbar 
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: #515c5e;
+}

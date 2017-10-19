@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../../core/contact.service';
+import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { IContact } from '../../../shared/interfaces';
@@ -15,9 +16,9 @@ import * as firebase from 'firebase/app'; // typings only
 export class ContactsEditComponent implements OnInit {
   isNewContact: boolean;
   contactKey: string;
-  contact = { } as IContact;
-  selectedCompany: IContact;
-  contactCompanies = [];
+  contact = {} as IContact;
+  EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  private emailFormControl = new FormControl('', [Validators.required, Validators.pattern(this.EMAIL_REGEX)]);
 
   constructor(
     private location: Location,
@@ -38,7 +39,7 @@ export class ContactsEditComponent implements OnInit {
   getContact(key) {
     this.contactService.getContact(key)
       .subscribe((contact) => {
-        console.log(contact);
+        this.contact = contact;
       });
   }
 
@@ -51,8 +52,8 @@ export class ContactsEditComponent implements OnInit {
     this.router.navigate([`contacts`]);
   }
 
-  deleteContact(compny) {
-    this.contactService.deleteContact(compny)
+  deleteContact(contact) {
+    this.contactService.deleteContact(contact)
       .then(_ => this.location.back());
   }
 
@@ -62,4 +63,9 @@ export class ContactsEditComponent implements OnInit {
     storageRef.put(file)
       .then(uploadTask => this.contact.imageUrl = uploadTask.downloadURL);
   }
+
+  back() {
+    this.location.back();
+  }
+
 }

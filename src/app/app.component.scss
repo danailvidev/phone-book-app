@@ -99,6 +99,13 @@ header {
         position: sticky;
         top: 0px;
         z-index: 1;
+        .app-toolbar {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          width: 86%;
+        }
       }
     }
     /* Mobile: Shadow */
@@ -128,6 +135,7 @@ footer {
   text-align: left;
   padding: 5px;
 }
+
 .app-container {
-    padding: 15px;
+  padding: 15px;
 }
