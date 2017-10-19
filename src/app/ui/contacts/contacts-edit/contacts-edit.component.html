@@ -16,10 +16,7 @@
   </mat-input-container>
   <br>
   <mat-input-container>
-    <input matInput placeholder="Email" type="email" [(ngModel)]="contact.email" [formControl]="emailFormControl">
-    <mat-error *ngIf="emailFormControl.hasError('pattern')">
-      Enter a Valid email!
-    </mat-error>
+    <input matInput placeholder="Email" type="email" [(ngModel)]="contact.email">
   </mat-input-container>
   <br>
   <mat-input-container>

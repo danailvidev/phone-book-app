@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../../core/contact.service';
-import { FormControl, Validators } from '@angular/forms';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { IContact } from '../../../shared/interfaces';
@@ -17,8 +17,7 @@ export class ContactsEditComponent implements OnInit {
   isNewContact: boolean;
   contactKey: string;
   contact = {} as IContact;
-  EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  private emailFormControl = new FormControl('', [Validators.required, Validators.pattern(this.EMAIL_REGEX)]);
+ 
 
   constructor(
     private location: Location,

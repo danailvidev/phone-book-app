@@ -32,9 +32,10 @@
           </div>
         </mat-toolbar>
 
-        <div class="app-container">
-          <router-outlet></router-outlet>
-        </div>
+        
+        <div class="app-container" [@routerAnimation]="getRouteAnimation(route)">
+            <router-outlet #route="outlet"></router-outlet>
+          </div>
 
       </mat-sidenav-container>
     </span>

@@ -7,8 +7,8 @@ import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
     { path: 'home', component: HomeComponent },
-    { path: 'contacts', component: ContactsComponent, canActivate: [AuthGuard] },
-    { path: 'contact-edit/:id', component: ContactsEditComponent, canActivate: [AuthGuard] },
+    { path: 'contacts', component: ContactsComponent, canActivate: [AuthGuard], data: {animation: 'te'} },
+    { path: 'contact-edit/:id', component: ContactsEditComponent, canActivate: [AuthGuard], data: {animation: 'dsa'} },
     { path: '**', pathMatch: 'full', redirectTo: '/home' }
 ];
 
