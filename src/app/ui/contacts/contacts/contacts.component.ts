@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ContactsComponent implements OnInit {
   contacts$: Observable<IContact[]>;
-
+  test: any;
   constructor(private contactService: ContactService) { }
 
   ngOnInit() {
@@ -21,5 +21,9 @@ export class ContactsComponent implements OnInit {
   getContacts() {
     this.contacts$ = this.contactService.getContacts();
     console.log('contacts$', this.contacts$);
+  }
+
+  getContactsStartWithChar(letters) {
+    this.contacts$ = this.contactService.getContactsStartWithChar(letters);
   }
 }

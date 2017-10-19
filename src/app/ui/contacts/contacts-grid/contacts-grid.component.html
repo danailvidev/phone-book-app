@@ -1,8 +1,18 @@
-<md-nav-list>
-    <md-list-item *ngFor="let contact of contacts | async; let i = index">
-      <a mdLine [routerLink]="['/contacts',contact.id]">{{contact.name}} {{contact.address}}</a>
-      <span>{{i + 1}}</span>  
-      <mat-divider></mat-divider>
-    </md-list-item>
-  </md-nav-list>
-  
+<div class="wrapper">
+  <div class="buttons">
+    <mat-radio-group (change)="getByStartingChar(favoriteOption)" class="radio-group" [(ngModel)]="favoriteOption">
+      <mat-radio-button class="radio-button" *ngFor="let option of options" [value]="option">
+        {{option}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <mat-nav-list>
+    <mat-list-item *ngFor="let contact of contacts | async; let i = index" [routerLink]="['/contacts',contact.$key]">
+      <img matListAvatar src="http://via.placeholder.com/50x50" alt="...">
+      <a matLine>{{contact.name}}</a>
+      <button mat-icon-button>
+        <mat-icon>info</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-nav-list>
+</div>

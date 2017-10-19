@@ -19,7 +19,8 @@ import {
   MatListModule,
   MatIconModule,
   MatTooltipModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatRadioModule
 } from '@angular/material';
 
 import 'hammerjs';
@@ -46,7 +47,8 @@ import 'hammerjs';
     MatMenuModule,
     MatIconModule,
     MatTooltipModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatRadioModule
   ],
   exports: [
     CommonModule,
@@ -68,7 +70,8 @@ import 'hammerjs';
     MatMenuModule,
     MatIconModule,
     MatTooltipModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatRadioModule
   ]
 })
 export class SharedModule { }

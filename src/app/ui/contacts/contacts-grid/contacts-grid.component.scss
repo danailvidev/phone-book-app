@@ -1,0 +1,32 @@
+:host {
+  padding-left: 0;
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    .buttons {
+      width: 40px;
+      flex-grow: 0;
+      border-right: 2px solid #3b4041;
+      mat-radio-button {
+        height: 60px;
+        font-size: 16px;
+        display: flex;
+        margin-left: -36px;
+        &.mat-radio-checked {
+          background: #3b4041;
+        }
+      }
+    }
+    mat-nav-list {
+      flex-grow: 1;
+    }
+  }
+}
+
+.mat-radio-label-content {
+  width: 70px;
+}
+
+.mat-list-text, .mat-line {
+    height: 100%;
+}

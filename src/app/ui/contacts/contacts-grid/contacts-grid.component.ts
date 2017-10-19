@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnInit, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 import { IContact } from '../../../shared/interfaces';
 
 @Component({
@@ -9,9 +9,26 @@ import { IContact } from '../../../shared/interfaces';
 })
 export class ContactsGridComponent implements OnInit {
   @Input() contacts: IContact[] = [];
+  @Output() getContactsStartWithChar: EventEmitter<any> = new EventEmitter();
+
+  favoriteOption = 'ALL' as string;
+
+    options = [
+      'ALL',
+      'DEF',
+      'GHI',
+      'JKL',
+      'MNO',
+      'PQRS',
+      'TUV',
+    ];
   constructor() { }
 
   ngOnInit() {
+  }
+
+  getByStartingChar(letters) {
+    this.getContactsStartWithChar.emit(letters);
   }
 
 }

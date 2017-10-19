@@ -5,7 +5,11 @@ import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable }
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/operator/mergeMap';
+
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
@@ -21,7 +25,56 @@ export class ContactService {
         return this.db.object(`/contacts/${contactKey}`);
     }
 
+    getContactsStartWithChar(letters: string) {
+        if (letters === 'ALL') {
+            return this.getContacts();
+        }
+        const array = Array.from(letters);
+
+        // const test = this.db.database.ref()
+        //     .child('contacts')
+        //     .orderByChild('name')
+        //     .startAt(array[0])
+        //     .endAt(array[0] + '\uf8ff');
+
+        //     console.log(test);
+        const list1 = this.db.list(`contacts`, {
+            query: {
+                orderByChild: 'name',
+                startAt: array[0],
+                endAt: array[0] + '\uf8ff'
+            }
+        });
+
+        const list2 = this.db.list(`contacts`, {
+            query: {
+                orderByChild: 'name',
+                startAt: array[1],
+                endAt: array[1] + '\uf8ff'
+            }
+        });
+
+        return Observable.combineLatest(
+            list1,
+            list2
+          )
+          .flatMap( (data) => {
+              console.log(data);
+              return data;
+            });
+
+
+        // return this.db.list(`contacts`, {
+        //     query: {
+        //         orderByChild: 'name',
+        //         startAt: array[0],
+        //         endAt: array[0] + '\uf8ff'
+        //     }
+        // });
+    }
+
     saveContact(contact: IContact) {
+        contact.name = this.capitalizeFirstLetter(contact.name);
         return this.contacts$.push(contact)
             .then(_ => console.log('success save'));
     }
@@ -48,7 +101,7 @@ export class ContactService {
         return this.subject$
             .switchMap(companyKey => companyKey === undefined
                 ? this.contacts$
-                : this.contacts$)
+                : this.db.list(`companyContacts/${companyKey}`))
             .catch(this.handleError);
     }
 
@@ -66,5 +119,10 @@ export class ContactService {
             return Observable.throw(errMessage);
         }
         return Observable.throw(error || 'json server error');
+    }
+
+    private capitalizeFirstLetter(string) {
+
+        return string.charAt(0).toUpperCase() + string.slice(1);
     }
 }

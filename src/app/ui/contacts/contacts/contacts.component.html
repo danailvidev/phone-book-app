@@ -1,8 +1,7 @@
-<p>
-  contacts works!
-</p>
-
-<app-contacts-grid [contacts]="contacts$"></app-contacts-grid>
+<app-contacts-grid 
+  [contacts]="contacts$"
+  (getContactsStartWithChar)="getContactsStartWithChar($event)">
+</app-contacts-grid>
 
 <button mat-fab [routerLink]="['/contact-edit/new']">
   <mat-icon>add</mat-icon>
