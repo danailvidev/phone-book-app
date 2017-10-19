@@ -7,7 +7,7 @@
     </mat-radio-group>
   </div>
   <mat-nav-list>
-    <mat-list-item *ngFor="let contact of contacts | async; let i = index" [routerLink]="['/contacts',contact.$key]">
+    <mat-list-item *ngFor="let contact of contacts; let i = index" [routerLink]="['/contacts',contact.$key]">
       <img matListAvatar src="http://via.placeholder.com/50x50" alt="...">
       <a matLine>{{contact.name}}</a>
       <button mat-icon-button>

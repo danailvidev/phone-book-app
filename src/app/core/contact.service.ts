@@ -7,8 +7,10 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/mergeMap';
+// import 'rxjs/add/observable/combineLatest';
+// import 'rxjs/add/observable/forkJoin';
+// import 'rxjs/add/operator/concat';
+// import 'rxjs/add/operator/mergeMap';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
@@ -25,8 +27,9 @@ export class ContactService {
         return this.db.object(`/contacts/${contactKey}`);
     }
 
+    // [Obsolete("use this method to get filtered contacts from db")]
     getContactsStartWithChar(letters: string) {
-        if (letters === 'ALL') {
+        if (letters.toUpperCase() === 'ALL') {
             return this.getContacts();
         }
         const array = Array.from(letters);
@@ -54,14 +57,22 @@ export class ContactService {
             }
         });
 
-        return Observable.combineLatest(
-            list1,
-            list2
-          )
-          .flatMap( (data) => {
-              console.log(data);
-              return data;
-            });
+        // return list1.concat(list2);
+
+        //  return Observable.forkJoin(list1, list2).subscribe((res: any) => {
+        //      this.test = res;
+        //      console.log(this.test);
+        //      return this.test;
+        //     });
+
+        // return Observable.combineLatest(
+        //     list1,
+        //     list2
+        //   )
+        //   .flatMap( (data) => {
+        //       console.log(data);
+        //       return data;
+        //     });
 
 
         // return this.db.list(`contacts`, {
@@ -97,6 +108,7 @@ export class ContactService {
             .catch(this.handleError);
     }
 
+    // TODO: refactor
     getContacts() {
         return this.subject$
             .switchMap(companyKey => companyKey === undefined

@@ -9,8 +9,6 @@
     <input type="text" matInput [(ngModel)]="contact.name">
   </mat-input-container>
 
-
-
   <mat-card-actions align="right">
     <button mat-raised-button color="primary" (click)="saveContact(contact)">Save</button>
     <button [disabled]="isNewContact" mat-raised-button color="warn" (click)="deleteContact(contact)">Delete</button>

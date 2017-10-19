@@ -24,7 +24,7 @@ import {
 } from '@angular/material';
 
 import 'hammerjs';
-// import 'firebase/storage'; // global firebase storage js
+import 'firebase/storage'; // global firebase storage js
 
 @NgModule({
   imports: [
