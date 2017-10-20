@@ -27,14 +27,24 @@ export class ContactService {
         return this.db.object(`/contacts/${contactKey}`);
     }
 
-    getContactByName(name: string) {
-        name = this.capitalizeFirstLetter(name);
-        return this.db.list(`contacts`, {
-            query: {
-                orderByChild: 'name',
-                equalTo: name
-            }
+    getContactByName(inputName: string) {
+        // [Obsolete(get contact name from firebase with query)]
+        // inputName = this.capitalizeFirstLetter(inputName);
+        // return this.db.list(`contacts`, {
+        //     query: {
+        //         orderByChild: 'name',
+        //         equalTo: inputName
+        //     }
+        // });
+        const contacts = [];
+        this.contacts$.subscribe(con => {
+            con.forEach(data => {
+                if (data.name.toLowerCase().indexOf(inputName.toLowerCase()) > -1) {
+                    contacts.push(data);
+                }
+            });
         });
+        return Observable.of(contacts);
     }
 
     // [Obsolete("use this method to get filtered contacts from db")]
