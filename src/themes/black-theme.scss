@@ -1,0 +1,20 @@
+$dv-black-primary: mat-palette($mat-grey, 900, 500, 900);
+$dv-black-accent: mat-palette($mat-green, A200);
+$dv-black-warn: mat-palette($mat-red, A200);
+
+$dv-black-theme: mat-dark-theme(
+    $dv-black-primary,
+    $dv-black-accent,
+    $dv-black-warn
+);
+
+.black-theme {
+    mat-toolbar {
+        button.nav-button {
+        &.active {
+            color: mat-color($dv-black-accent, default-contrast);
+            background-color: mat-color($dv-black-accent);
+            }
+        }
+    }
+}

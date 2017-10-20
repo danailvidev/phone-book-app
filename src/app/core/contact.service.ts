@@ -135,6 +135,7 @@ export class ContactService {
                 userName === undefined
                 || userName === ''
                 || userName == null
+                // tslint:disable-next-line:triple-equals
                 || userName == ' '
                 ? this.contacts$
                 : this.getContactByName(userName))

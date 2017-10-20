@@ -2,6 +2,18 @@
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css'; 
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 @import url(https://fonts.googleapis.com/css?family=Nunito:400);
+@import '~@angular/material/theming';
+@include mat-core();
+@import './themes/light-theme';
+@import './themes/black-theme';
+.light-theme {
+  @include angular-material-theme($dv-light-theme);
+}
+
+.black-theme {
+  @include angular-material-theme($dv-black-theme);
+}
+
 
 // custom font
 body {

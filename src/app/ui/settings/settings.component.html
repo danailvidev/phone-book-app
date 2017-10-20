@@ -1,0 +1,9 @@
+<p>
+  Change theme color
+</p>
+<br>
+<mat-select placeholder="Select theme" name="theme" [ngModel]="theme" (change)="setTheme($event)">
+  <mat-option *ngFor="let t of themes" [value]="t.value">
+    {{t.label}}
+  </mat-option>
+</mat-select>

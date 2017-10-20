@@ -1,0 +1,19 @@
+$dv-light-primary: mat-palette($mat-grey, 200, 500, 300);
+$dv-light-accent: mat-palette($mat-brown, 200);
+$dv-light-warn: mat-palette($mat-deep-orange, 200);
+
+$dv-light-theme: mat-light-theme(
+    $dv-light-primary,
+    $dv-light-accent,
+    $dv-light-warn
+);
+.light-theme {
+    mat-toolbar {
+        button.nav-button {
+        &.active {
+            color: mat-color($dv-light-accent, default-contrast);
+            background-color: mat-color($dv-light-accent);
+            }
+        }
+    }
+}
