@@ -9,7 +9,7 @@
   <mat-nav-list>
     <mat-list-item *ngFor="let contact of contacts" [routerLink]="['/contact-edit',contact.$key]">
       <img matListAvatar *ngIf="contact.imageUrl" [src]="contact.imageUrl" alt="contact image">
-      <img matListAvatar *ngIf="!contact.imageUrl" [src]="'/assets/default-avatar.svg'" alt="contact image">
+      <img matListAvatar *ngIf="!contact.imageUrl" [src]="'assets/default-avatar.svg'" alt="contact image">
       <a matLine>{{contact.name}}</a>
       <!-- <button mat-icon-button>
         <mat-icon>info</mat-icon>
