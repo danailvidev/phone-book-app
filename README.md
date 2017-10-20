@@ -4,6 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Demo -> [LINK](https://webadventure.org/phone-book-app)
 
+![Alt text](https://webadventure.org/phone-book-app/phone-app.jpg?raw=true "Sample")
+
 ## Run the app
 
 Need `node` to be installed. Download it from here: `https://nodejs.org/en/`
