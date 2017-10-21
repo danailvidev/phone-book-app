@@ -15,6 +15,7 @@ export class ContactsGridComponent implements OnInit {
 
     options = [
       'ALL',
+      'ABC',
       'DEF',
       'GHI',
       'JKL',
