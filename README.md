@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Demo -> [LINK](https://geop.io/phone-book-app)
 
-![Alt text](https://webadventure.org/phone-book-app/phone-app.jpg?raw=true "Sample")
+![Alt text](https://geop.io/phone-book-app/phone-app.jpg?raw=true "Sample")
 
 ## Run the app
 
