@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.3.
 
-Demo -> [LINK](https://geop.io/phone-book-app)
+Demo -> [LINK](https://phonebook.phyre.dev)
 
 ![Alt text](https://phonebook.phyre.dev/phone-app.jpg?raw=true "Sample")
 
